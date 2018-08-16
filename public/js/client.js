@@ -1,7 +1,5 @@
-//分割字串才不會報錯
 var search = window.location.search.split("=");
 var driverID = search[1];
-//前端資料有變數要在前端做
 var fbody = {
 
   guestKey: "",

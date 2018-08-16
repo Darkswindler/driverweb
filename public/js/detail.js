@@ -39,7 +39,7 @@ new Vue({
     axios
       .get('/driverList')
       .then(data => {
-        this.infodata.data.results = data.data.results1
+        this.infodata.data.results = data.data.results
         console.log(data);
       })
   },
