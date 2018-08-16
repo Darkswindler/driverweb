@@ -19,8 +19,8 @@ new Vue({
   },
   methods: {
     go: (driverID) => {
-      // window.location.href = ("https://driverweb.herokuapp.com/" + "?id=" +driverID);
-      window.location.href = ("http://localhost:8080/html/driverweb.html" + "?id=" + driverID);
+      window.location.href = ("https://dev-driverweb.herokuapp.com/html/driverweb.html" + "?id=" +driverID);
+      // window.location.href = ("http://localhost:8080/html/driverweb.html" + "?id=" + driverID);
     }
   }
 });
@@ -45,8 +45,8 @@ new Vue({
   },
   methods: {
     go: (driverID) => {
-      // window.location.href = ("https://driverweb.herokuapp.com/" + "?id=" +driverID);
-      window.location.href = ("http://localhost:8080/html/driverweb.html" + "?id=" + driverID);
+      window.location.href = ("https://dev-driverweb.herokuapp.com/html/driverweb.html" + "?id=" +driverID);
+      // window.location.href = ("http://localhost:8080/html/driverweb.html" + "?id=" + driverID);
     }
   }
 });
