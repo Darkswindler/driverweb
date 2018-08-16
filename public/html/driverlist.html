@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/driverlist.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.18/jquery.touchSwipe.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <nav id="head-1" class="navbar navbar-expand-lg navbar-dark">
+        <p id="head-2" class="navbar-brand">BlueNet</p>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto" id="head-3">
+                <li class="nav-item ">
+                    <p class="nav-link">
+                        <a class="head-4" href="https://www.bluenet-ride.com/cue">朋友圈</a>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">
+                        <a class="head-4" href="https://www.bluenet-ride.com/taxi/menu">計程車</a>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">
+                        <a class="head-4" href="https://www.bluenet-ride.com/html/BluNet_BIKE.html">Ubike</a>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">
+                        <a class="head-4" href="https://www.bluenet-ride.com/html/BluNet_BUS.html">公車</a>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">
+                        <a class="head-4" href="https://www.bluenet-ride.com/html/BluNet_TRAIN.html">火車/高鐵</a>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">
+                        <a class="head-4" href="https://www.bluenet-ride.com/login">登入</a>
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">
+                        <img src="/images/search.PNG" class="head-4" data-toggle="modal" data-target="#search">
+                    </p>
+                </li>
+                <li class="nav-item">
+                    <p class="nav-link">
+                        <img class="head-4" id="bell" src="/images/bell.PNG">
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">快速尋找共乘</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="recipient-name" placeholder="請輸入出發地點">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="recipient-name" placeholder="請輸入到達地點">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="recipient-name" placeholder="出發時間">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="recipient-name" placeholder="出發地點">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">搜尋</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="menu" class="d-flex justify-content-around no-gutters">
+        <div class="col-lg-2 col-md-2 col-sm-2 col-4 no-gutters feature">
+            <img class="btn feature-picture" src="/images/feature1.PNG">
+            <div>
+                <span>叫計程車</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-4 no-gutters feature">
+
+            <img class="btn feature-picture" src="/images/feature2.PNG">
+
+            <div>
+                <span>訂單紀錄</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-4 no-gutters feature">
+
+            <img class="btn feature-picture" src="/images/feature3.PNG">
+
+            <div>
+                <span>共乘叫車</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-4 no-gutters feature">
+
+            <img class="btn feature-picture" src="/images/feature4.PNG">
+
+            <div>
+                <span>付款方式</span>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-2 col-4 no-gutters feature">
+
+            <img class="btn feature-picture" src="/images/feature5.PNG">
+
+            <div>
+                <span>資料設定</span>
+            </div>
+        </div>
+    </div>
+    <p id="introduction">英雄榜司機介紹</p>
+    <div class="container-fluid">
+        <div class="row justify-content-end no-gutters">
+            <img src="/images/cubeebear.PNG" id="cubeebear">
+        </div>
+        <hr id="separation-line"></hr>
+    </div>
+    <div id="driverinformation-1" class="justify-content-around no-gutters">
+        <div class="col-3" id="driverinformation-2" v-for="(item, index) in infodata.data.results">
+            <div class="justify-content-center align-items-center" id="title">
+                <span>{{index+1}}.</span>
+            </div>
+            <div class="row justify-content-around" id="information">
+                <img :src="item.facePhoto" id="facephoto">
+                <div class="col-10" id="information-2">
+                    <p id="name">{{item.name}}</p>
+                    <div class="col">
+                        <div class="row align-items-center">
+                            <span class="p-0">車況 : </span>
+                            <p v-for="n in Math.floor1
+                            (item.grade.car)" class="star">★</p>
+                        </div>
+                        <div class="row align-items-center">
+                            <span class="p-0">服務 : </span>
+                            <p v-for="n in Math.floor1
+                            (item.grade.service)" class="star">★</p>
+                        </div>
+                        <div class="row align-items-center">
+                            <span class="p-0">守時 : </span>
+                            <p v-for="n in Math.floor1
+                            (item.grade.onTime)" class="star">★</p>
+                        </div>
+                    </div>
+                    <div style="height: 15px;"></div>
+                    <span>電話: {{item.number}}</span>
+                    <div>
+                        <div class="d-flex">
+                            <span>已服務人數:&nbsp;&nbsp;&nbsp;{{item.grade.count}}</span>
+                            <p class="btn ml-5" id="more" v-on:click="go(item.driverID)">更多 →</p>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="driverinformation-rwd" class="container-fluid">
+        <div class="row justify-content-around">
+            <div id="carouselControl" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div id="driverinformation-2" class="carousel-item" v-for="(item, index) in infodata.data.results" :class={active:index==0}>
+                        <div class="justify-content-center align-items-center" id="title">
+                            <span>{{index+1}}.</span>
+                        </div>
+                        <div class="row justify-content-around" id="information">
+                            <img :src="item.facePhoto" id="facephoto">
+                            <div class="col-8" id="information-2">
+                                <p id="name">{{item.name}}</p>
+                                <div class="col">
+                                    <div class="row align-items-center">
+                                        <span class="p-0">車況 : </span>
+                                        <p v-for="n in Math.floor1
+                                        (item.grade.car)" class="star">★</p>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <span class="p-0">服務 : </span>
+                                        <p v-for="n in Math.floor1
+                                        (item.grade.service)" class="star">★</p>
+                                    </div>
+                                    <div class="row align-items-center">
+                                        <span class="p-0">守時 : </span>
+                                        <p v-for="n in Math.floor1
+                                        (item.grade.onTime)" class="star">★</p>
+                                    </div>
+                                </div>
+                                <p>電話: {{item.number}}</p>
+                                <p class="btn" id="more" v-on:click="go(item.driverID)">更多 →</p>
+                                <div>已服務人數:&nbsp;&nbsp;&nbsp;&nbsp;{{item.grade.count}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <a id="gesture-right" class="carousel-control-prev" href="#carouselControl" role="button" data-slide="prev">
+                        <span class="fas fa-angle-left fa-3x" aria-hidden="true" style="color: grey;"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a id="gesture-left" class="carousel-control-next" href="#carouselControl" role="button" data-slide="next">
+                        <span class="fas fa-angle-right fa-3x" aria-hidden="true" style="color: grey;"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+            </div>
+        </div>
+    </div>
+    <span id="title2">計程車文宣下載</span>
+    <hr id="separation-line2"></hr>
+    <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div id="" class="row justify-content-around align-items-end">
+                <div id="sticker1" class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 carousel-item active">
+                    <div style="height:46px; background-color: #ffffff">
+                    </div>
+                    <div class="row justify-content-around">
+                        <img src="/images/sticker1.PNG">
+                    </div>
+                    <div class="row justify-content-around">
+                        <span id="sticker-item">車頂燈下載</span>
+                    </div>
+                    <div class="row justify-content-around">
+                        <span class="btn" id="sticker-link">前往下載→ </span>
+                    </div>
+                </div>
+                <div id="sticker2" class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 carousel-item ">
+                    <div class="row justify-content-around">
+                        <img src="/images/sticker2.PNG">
+                    </div>
+                    <div class="row justify-content-around">
+                        <span id="sticker-item">貼紙下載</span>
+                    </div>
+                    <div class="row justify-content-around">
+                        <span class="btn" id="sticker-link">前往下載→ </span>
+                    </div>
+                </div>
+                <div id="sticker3" class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 carousel-item ">
+                    <div style="height:15px; background-color: #ffffff">
+                    </div>
+                    <div class="row justify-content-around">
+                        <img src="/images/sticker3.PNG">
+                    </div>
+                    <div class="row justify-content-around">
+                        <span id="sticker-item">名片下載</span>
+                    </div>
+                    <div class="row justify-content-around">
+                        <span class="btn" id="sticker-link">前往下載→ </span>
+                    </div>
+                </div>
+                <div id="sticker4" class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12 carousel-item ">
+                    <div style="height:57px; background-color: #ffffff">
+                    </div>
+                    <div class="row justify-content-around">
+                        <img src="/images/sticker4.PNG">
+                    </div>
+                    <div class="row justify-content-around">
+                        <span id="sticker-item">車身彩繪下載</span>
+                    </div>
+                    <div class="row justify-content-around">
+                        <span class="btn" id="sticker-link">前往下載→ </span>
+                    </div>
+                </div>
+                <a id="carousel-button1" class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
+                    <span class="fas fa-angle-left fa-3x" aria-hidden="true" style="color: grey;"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a id="carousel-button2" class="carousel-control-next" href="#carouselExampleControls1" role="button" data-slide="next">
+                    <span class="fas fa-angle-right fa-3x" aria-hidden="true" style="color: grey;"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div style="height: 24px;"></div>
+    <div class="btn" id="pagetop-button">↑</div>
+    <script src="/js/detail.js"></script>
+</body>
+
+</html>

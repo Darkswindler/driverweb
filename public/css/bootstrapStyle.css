@@ -1,0 +1,208 @@
+#head-1 {
+	background-color: #83D8DA;
+}
+
+#head-2 {
+	color: #FFFFFF;
+	font-size: 30px;
+}
+
+#head-3 {
+	margin-top: 10px;
+	font-size: 20px;
+	white-space: nowrap;
+	color: #FFFFFF;
+}
+
+.head-4 {
+	color: #FFFFFF;
+}
+
+.head-4:hover {
+	color: red;
+	font-size: 25px;
+	transform: scale(1.5, 1.5);
+}
+
+.title {
+	background-color: #FFFFFF;
+}
+
+#information-title {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#information-body {
+	background-color: #FAFAFA
+}
+
+#information-facephoto {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px
+}
+
+#information-name {
+	font-weight: bold
+}
+
+#information-star {
+	margin-top: -10px;
+	color: yellow;
+	font-size: 25px
+}
+
+#information-profilebtn {
+	padding: 10px;
+	border-radius: 30px;
+	background-color: #76D4D6;
+	color: #FFFFFF
+}
+
+#information-servicebtn {
+	padding: 10px;
+	border-radius: 30px;
+	background-color: #FFFFFF;
+	color: #76D4D6;
+	border: 1px solid #76D4D6
+}
+
+#information-phonepicture {
+	width: 30px;
+	height: 30px
+}
+
+#information-phone {
+	color: #666666
+}
+
+#information-numOfservicepicture {
+	width: 30px;
+	height: 30px
+}
+
+#information-numOfservice {
+	color: #666666
+}
+
+.title-font {
+	font-weight: bold
+}
+
+.profile-text {
+	color: #787878;
+}
+
+#chinesetext {
+	font-size: 20px
+}
+
+#englishtext {
+	font-size: 20px
+}
+
+.text-font {
+	font-weight: bold
+}
+
+.container {
+	width: 100%;
+	height: 90vh;
+	margin: 0px;
+	-webkit-font-smoothing: antialiased;
+}
+
+.card.text-center .card-body button {
+	margin: 5px 0px;
+}
+
+#service-items {
+	height: 80%;
+	width: 90%;
+	font-size: 12px;
+	color: #5F5F5F;
+	background: #FFE51C;
+	border-radius: 10px;
+	margin: 5px;
+	z-index: 3
+}
+
+#service-background {
+	background-image: url(/images/service-background.PNG);
+	background-size: 75%;
+	background-position: center;
+	background-repeat: no-repeat;
+	z-index: 2;
+}
+
+#carphoto {
+	width: 50%;
+	height: 50%;
+	margin: auto
+}
+
+#carphoto:hover {
+	transform: scale(1.5, 1.5);
+}
+
+.status {
+	float: left;
+	text-align: center
+}
+
+span {
+	white-space: nowrap;
+}
+
+#status-phone {
+	color: #747474
+}
+
+#status-license {
+	color: #747474
+}
+
+#evaluation {
+	background-color: #3C4246
+}
+
+#evaluation-title {
+	color: #FFFFFF;
+	font-weight: bold
+}
+
+#evaluation-body {
+	height: 24px;
+	margin-bottom: 15px
+}
+
+#evaluation-username {
+	color: #FFFFFF
+}
+
+#evaluation-date {
+	color: #FFFFFF;
+	margin-left: 20px
+}
+
+#evaluation-message {
+	margin-bottom: 15px
+}
+
+#evaluation-star {
+	margin-bottom: 15px;
+	color: yellow
+}
+
+#pagetop-btn {
+	width: 50px;
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	z-index: 20;
+	border: 2px solid #69c;
+	font-size: 25px;
+	color: #69c;
+	text-align: center
+}

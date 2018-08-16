@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+	    crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/bootstrapStyle.css" />
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+	    crossorigin="anonymous"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script>
+	<script>
+		src = "https://code.jquery.com/jquery-3.1.1.js"
+	</script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+	<nav id="head-1" class="navbar navbar-expand-lg navbar-dark">
+		<p id="head-2" class="navbar-brand">BlueNet</p>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<ul class="navbar-nav ml-auto" id="head-3">
+				<li class="nav-item ">
+					<p class="nav-link">
+						<a class="head-4" href="https://www.bluenet-ride.com/cue">朋友圈</a>
+					</p>
+				</li>
+				<li class="nav-item">
+					<p class="nav-link">
+						<a class="head-4" href="https://www.bluenet-ride.com/taxi/menu">計程車</a>
+					</p>
+				</li>
+				<li class="nav-item">
+					<p class="nav-link">
+						<a class="head-4" href="https://www.bluenet-ride.com/html/BluNet_BIKE.html">Ubike</a>
+					</p>
+				</li>
+				<li class="nav-item">
+					<p class="nav-link">
+						<a class="head-4" href="https://www.bluenet-ride.com/html/BluNet_BUS.html">公車</a>
+					</p>
+				</li>
+				<li class="nav-item">
+					<p class="nav-link">
+						<a class="head-4" href="https://www.bluenet-ride.com/html/BluNet_TRAIN.html">火車/高鐵</a>
+					</p>
+				</li>
+				<li class="nav-item">
+					<p class="nav-link">
+						<a class="head-4" href="https://www.bluenet-ride.com/login">登入</a>
+					</p>
+				</li>
+				<li class="nav-item">
+					<p class="nav-link">
+						<img src="/images/search.PNG" class="head-4" data-toggle="modal" data-target="#search">
+					</p>
+				</li>
+				<li class="nav-item">
+					<p class="nav-link">
+						<img id="bell" class="head-4" src="/images/bell.PNG">
+					</p>
+				</li>
+			</ul>
+		</div>
+	</nav>
+	<div class="modal fade" id="search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">快速尋找共乘</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<form>
+						<div class="form-group">
+							<input type="text" class="form-control" id="recipient-name" placeholder="請輸入出發地點">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="recipient-name" placeholder="請輸入到達地點">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="recipient-name" placeholder="出發時間">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" id="recipient-name" placeholder="出發地點">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary">搜尋</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">關閉</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="app">
+		<div class="card-columns row no-gutters">
+			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+				<div class="card text-center">
+					<div class="card-header title">
+						<h4 id="information-title" class="card-title">司機資訊</h4>
+					</div>
+					<div id="information-body" class="card-body">
+						<img id="information-facephoto" :src="infodata.data.results.facePhoto">
+						<p id="information-name" class="card-text">{{infodata.data.results.name}}</p>
+						<div class="col">
+							<div class="row">
+								<p class="col p-0">車況 : </p>
+								<div class="col row">
+									<p id="information-star" v-for="n in Math.floor (infodata.data.results.grade.car)">★</p>
+								</div>
+							</div>
+							<div class="row">
+								<p class="col p-0">服務 : </p>
+								<div class="col row">
+									<p id="information-star" v-for="n in Math.floor(infodata.data.results.grade.service)">★</p>
+								</div>
+							</div>
+							<div class="row">
+								<p class="col p-0">守時 : </p>
+								<div class="col row">
+									<p id="information-star" v-for="n in Math.floor(infodata.data.results.grade.onTime)">★</p>
+								</div>
+							</div>
+						</div>
+						<div class="btn-group-vertical">
+							<button id="information-profilebtn" type="button" class="btn">個人簡介</button>
+							<button id="information-servicebtn" type="button" class="btn">服務項目與特色</button>
+						</div>
+						<div class="col p-3">
+							<div class="row justify-content-center">
+								<img id="information-phonepicture" src="/images/phone.PNG">
+								<p id="information-phone">{{infodata.data.results.phone.number}}</p>
+							</div>
+							<div class="row justify-content-center">
+								<img id="information-numOfservicepicture" src="/images/numofservice.PNG">
+								<p id="information-numOfservice">已服務人數 {{infodata.data.results.numOfService}} 人</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+				<div class="row no-gutters">
+					<div class="card col-12 text-left">
+						<div class="card-header title">
+							<h4 class="card-title title-font">個人簡介</h4>
+						</div>
+						<div class="card-body profile-text">
+
+
+							<p id="chinesetext" class="card-text" v-if="infodata.data.results.remark==''">司機可留言或備註</p>
+							<p id="chinesetext" class="card-text" v-else>{{infodata.data.results.remark}}</p>
+							<p id="englishtext" class="card-text">&nbsp;</p>
+							<p class="card-text text-font">性別: {{infodata.data.results.gender | fgender}}</p>
+							<p class="card-text text-font">語言: {{infodata.data.results.skill | flan}}</p>
+							<p class="card-text text-font">車牌: {{infodata.data.results.car.licensePlate}}</p>
+						</div>
+					</div>
+				</div>
+				<div class="row no-gutters">
+					<div class="card col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div class="card-header title">
+							<h4 class="card-title title-font">服務項目與特色</h4>
+						</div>
+						<div class="card-body" id="service-background">
+							<div class="row text-center">
+								<div v-for="n in infodata.data.results.extra" class="col-md-4 col-4">
+									<p id="service-items">{{n}}</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+						<div class="card">
+							<div class="card-header title">
+								<h4 class="card-title title-font">愛車照片</h4>
+							</div>
+							<div class="card-body">
+								<div class="row">
+									<img id="carphoto" :src="infodata.data.results.carPhoto">
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header title">
+								<h4 class="card-title title-font">認證狀態</h4>
+							</div>
+							<div class="card-body row justify-content-start no-gutters">
+								<div class="col-6 status" v-show="infodata.data.results.phone.isVerify">
+									<img src="/images/status-phone.PNG">
+									<br>
+									<span id="status-phone">電話已認證</span>
+								</div>
+								<div class="col-6 status" v-show="infodata.data.results.license.isVerify">
+									<img src="/images/status-license.PNG">
+									<br>
+									<span id="status-license">營登已認證</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+				<div id="evaluation">
+					<div class="card-header">
+						<h4 id="evaluation-title" class="card-title">乘客評價</h4>
+					</div>
+					<div class="card-body">
+						<div class="col">
+							<div class="row" v-for="(item, index) in infodata.data.results.gradeHistory">
+								<div class="col-9">
+									<div id="evaluation-body" class="row">
+										<p id="evaluation-username" data-toggle="collapse" :data-target="'#'+index" aria-expanded="false">{{item.userName}}</p>
+										<p id="evaluation-date">{{item.time | fDate}}</p>
+									</div>
+									<div id="evaluation-message" class="row">
+										<span :id="index" class="collapse text-info">你好阿</span>
+									</div>
+								</div>
+								<div class="row">
+									<p id="evaluation-star" v-for="n in Math.floor((item.car+item.service+item.onTime)/3)">★</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="btn" id="pagetop-btn">↑</div>
+		<script src="/js/client.js"></script>
+	</div>
+</body>
+
+</html>
