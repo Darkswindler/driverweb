@@ -16,7 +16,7 @@ app.use(require("body-parser").json());
 
 // serve the homepage 預設主頁面為 index.html
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/html/driverlist.html');
+  res.sendFile(__dirname + '/public/html/driverlist.html');
 });
 
 // 後端接收前端  POST 的 接口  拿前端資料做壞事的地方!!!!
