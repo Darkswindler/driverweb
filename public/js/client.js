@@ -75,7 +75,7 @@ setTimeout(function () {
   });
   $(function () {
     $('#information-profilebtn').click(function () {
-      if ($(window).width() < 1200) {
+      if ($(window).width() < 992) {
         var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
         $body.animate({
           scrollTop: 700
@@ -86,7 +86,7 @@ setTimeout(function () {
   });
   $(function () {
     $('#information-servicebtn').click(function () {
-      if ($(window).width() < 1200) {
+      if ($(window).width() < 992) {
         var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
         $body.animate({
           scrollTop: 1000
