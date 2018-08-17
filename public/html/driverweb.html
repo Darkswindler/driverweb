@@ -105,134 +105,136 @@
 		</div>
 	</div>
 	<div id="app">
-		<div class="card-columns row no-gutters">
-			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<div class="card text-center">
-					<div class="card-header title">
-						<h4 id="information-title" class="card-title">司機資訊</h4>
-					</div>
-					<div id="information-body" class="card-body">
-						<img id="information-facephoto" :src="infodata.data.results.facePhoto">
-						<p id="information-name" class="card-text">{{infodata.data.results.name}}</p>
-						<div class="col">
-							<div class="row">
-								<p class="col p-0">車況 : </p>
-								<div class="col row">
-									<p id="information-star" v-for="n in Math.floor (infodata.data.results.grade.car)">★</p>
-								</div>
-							</div>
-							<div class="row">
-								<p class="col p-0">服務 : </p>
-								<div class="col row">
-									<p id="information-star" v-for="n in Math.floor(infodata.data.results.grade.service)">★</p>
-								</div>
-							</div>
-							<div class="row">
-								<p class="col p-0">守時 : </p>
-								<div class="col row">
-									<p id="information-star" v-for="n in Math.floor(infodata.data.results.grade.onTime)">★</p>
-								</div>
-							</div>
-						</div>
-						<div class="btn-group-vertical">
-							<button id="information-profilebtn" type="button" class="btn">個人簡介</button>
-							<button id="information-servicebtn" type="button" class="btn">服務項目與特色</button>
-						</div>
-						<div class="col p-3">
-							<div class="row justify-content-center">
-								<img id="information-phonepicture" src="/images/phone.PNG">
-								<p id="information-phone">{{infodata.data.results.phone.number}}</p>
-							</div>
-							<div class="row justify-content-center">
-								<img id="information-numOfservicepicture" src="/images/numofservice.PNG">
-								<p id="information-numOfservice">已服務人數 {{infodata.data.results.numOfService}} 人</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-				<div class="row no-gutters">
-					<div class="card col-12 text-left">
+		<div class="card-deck-wrapper">
+			<div class="card-deck row no-gutters">
+				<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+					<div class="card text-center">
 						<div class="card-header title">
-							<h4 class="card-title title-font">個人簡介</h4>
+							<h4 id="information-title" class="card-title">司機資訊</h4>
 						</div>
-						<div class="card-body profile-text">
-
-
-							<p id="chinesetext" class="card-text" v-if="infodata.data.results.remark==''">司機可留言或備註</p>
-							<p id="chinesetext" class="card-text" v-else>{{infodata.data.results.remark}}</p>
-							<p id="englishtext" class="card-text">&nbsp;</p>
-							<p class="card-text text-font">性別: {{infodata.data.results.gender | fgender}}</p>
-							<p class="card-text text-font">語言: {{infodata.data.results.skill | flan}}</p>
-							<p class="card-text text-font">車牌: {{infodata.data.results.car.licensePlate}}</p>
-						</div>
-					</div>
-				</div>
-				<div class="row no-gutters">
-					<div class="card col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-						<div class="card-header title">
-							<h4 class="card-title title-font">服務項目與特色</h4>
-						</div>
-						<div class="card-body" id="service-background">
-							<div class="row text-center">
-								<div v-for="n in infodata.data.results.extra" class="col-md-4 col-4">
-									<p id="service-items">{{n}}</p>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
-						<div class="card">
-							<div class="card-header title">
-								<h4 class="card-title title-font">愛車照片</h4>
-							</div>
-							<div class="card-body">
+						<div id="information-body" class="card-body">
+							<img id="information-facephoto" :src="infodata.data.results.facePhoto">
+							<p id="information-name" class="card-text">{{infodata.data.results.name}}</p>
+							<div class="col">
 								<div class="row">
-									<img id="carphoto" :src="infodata.data.results.carPhoto">
-								</div>
-							</div>
-						</div>
-						<div class="card">
-							<div class="card-header title">
-								<h4 class="card-title title-font">認證狀態</h4>
-							</div>
-							<div class="card-body row justify-content-start no-gutters">
-								<div class="col-6 status" v-show="infodata.data.results.phone.isVerify">
-									<img src="/images/status-phone.PNG">
-									<br>
-									<span id="status-phone">電話已認證</span>
-								</div>
-								<div class="col-6 status" v-show="infodata.data.results.license.isVerify">
-									<img src="/images/status-license.PNG">
-									<br>
-									<span id="status-license">營登已認證</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<div id="evaluation">
-					<div class="row card-header">
-						<h4 id="evaluation-title" class="card-title">乘客評價</h4>
-						<p class="btn"data-toggle="collapse" data-target="#evaluation-body" aria-expanded="false" style="color: #FFFFFF">▿</p>
-					</div>
-					<div id="evaluation-body"class="collapse card-body">
-						<div class="col">
-							<div class="row" v-for="(item, index) in infodata.data.results.gradeHistory">
-								<div class="col-9">
-									<div id="evaluation-item" class="row">
-										<p id="evaluation-username" data-toggle="collapse" :data-target="'#'+index" aria-expanded="false">{{item.userName}}</p>
-										<p id="evaluation-date">{{item.time | fDate}}</p>
-									</div>
-									<div id="evaluation-message" class="row">
-										<span :id="index" class="collapse text-info">你好阿</span>
+									<p class="col p-0">車況 : </p>
+									<div class="col row">
+										<p id="information-star" v-for="n in Math.floor (infodata.data.results.grade.car)">★</p>
 									</div>
 								</div>
 								<div class="row">
-									<p id="evaluation-star" v-for="n in Math.floor((item.car+item.service+item.onTime)/3)">★</p>
+									<p class="col p-0">服務 : </p>
+									<div class="col row">
+										<p id="information-star" v-for="n in Math.floor(infodata.data.results.grade.service)">★</p>
+									</div>
+								</div>
+								<div class="row">
+									<p class="col p-0">守時 : </p>
+									<div class="col row">
+										<p id="information-star" v-for="n in Math.floor(infodata.data.results.grade.onTime)">★</p>
+									</div>
+								</div>
+							</div>
+							<div class="btn-group-vertical">
+								<button id="information-profilebtn" type="button" class="btn">個人簡介</button>
+								<button id="information-servicebtn" type="button" class="btn">服務項目與特色</button>
+							</div>
+							<div class="col p-3">
+								<div class="row justify-content-center">
+									<img id="information-phonepicture" src="/images/phone.PNG">
+									<p id="information-phone">{{infodata.data.results.phone.number}}</p>
+								</div>
+								<div class="row justify-content-center">
+									<img id="information-numOfservicepicture" src="/images/numofservice.PNG">
+									<p id="information-numOfservice">已服務人數 {{infodata.data.results.numOfService}} 人</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+					<div class="row no-gutters">
+						<div class="card col-12 text-left">
+							<div class="card-header title">
+								<h4 class="card-title title-font">個人簡介</h4>
+							</div>
+							<div class="card-body profile-text">
+
+
+								<p id="chinesetext" class="card-text" v-if="infodata.data.results.remark==''">司機可留言或備註</p>
+								<p id="chinesetext" class="card-text" v-else>{{infodata.data.results.remark}}</p>
+								<p id="englishtext" class="card-text">&nbsp;</p>
+								<p class="card-text text-font">性別: {{infodata.data.results.gender | fgender}}</p>
+								<p class="card-text text-font">語言: {{infodata.data.results.skill | flan}}</p>
+								<p class="card-text text-font">車牌: {{infodata.data.results.car.licensePlate}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="row no-gutters">
+						<div class="card col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+							<div class="card-header title">
+								<h4 class="card-title title-font">服務項目與特色</h4>
+							</div>
+							<div class="card-body" id="service-background">
+								<div class="row text-center">
+									<div v-for="n in infodata.data.results.extra" class="col-md-4 col-4">
+										<p id="service-items">{{n}}</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12">
+							<div class="card">
+								<div class="card-header title">
+									<h4 class="card-title title-font">愛車照片</h4>
+								</div>
+								<div class="card-body">
+									<div class="row">
+										<img id="carphoto" :src="infodata.data.results.carPhoto">
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-header title">
+									<h4 class="card-title title-font">認證狀態</h4>
+								</div>
+								<div class="card-body row justify-content-start no-gutters">
+									<div class="col-6 status" v-show="infodata.data.results.phone.isVerify">
+										<img src="/images/status-phone.PNG">
+										<br>
+										<span id="status-phone">電話已認證</span>
+									</div>
+									<div class="col-6 status" v-show="infodata.data.results.license.isVerify">
+										<img src="/images/status-license.PNG">
+										<br>
+										<span id="status-license">營登已認證</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+					<div id="evaluation">
+						<div class="row card-header">
+							<h4 id="evaluation-title" class="card-title">乘客評價</h4>
+							<p class="btn" data-toggle="collapse" data-target="#evaluation-body" aria-expanded="false" style="color: #FFFFFF">▿</p>
+						</div>
+						<div id="evaluation-body" class="collapse card-body">
+							<div class="col">
+								<div class="row" v-for="(item, index) in infodata.data.results.gradeHistory">
+									<div class="col-9">
+										<div id="evaluation-item" class="row">
+											<p id="evaluation-username" data-toggle="collapse" :data-target="'#'+index" aria-expanded="false">{{item.userName}}</p>
+											<p id="evaluation-date">{{item.time | fDate}}</p>
+										</div>
+										<div id="evaluation-message" class="row">
+											<span :id="index" class="collapse text-info">你好阿</span>
+										</div>
+									</div>
+									<div class="row">
+										<p id="evaluation-star" v-for="n in Math.floor((item.car+item.service+item.onTime)/3)">★</p>
+									</div>
 								</div>
 							</div>
 						</div>
