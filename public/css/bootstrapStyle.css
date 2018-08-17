@@ -171,7 +171,9 @@ span {
 	color: #FFFFFF;
 	font-weight: bold
 }
-
+#evaluation-body{
+	height:600px;
+}
 #evaluation-item {
 	height: 24px;
 	margin-bottom: 15px
