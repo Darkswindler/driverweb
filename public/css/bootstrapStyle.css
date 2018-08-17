@@ -172,7 +172,6 @@ span {
 	font-weight: bold
 }
 #evaluation-body{
-	height:690px;
 	overflow-y: scroll;
 }
 #evaluation-item {

@@ -212,27 +212,27 @@
 						</div>
 					</div>
 				</div>
-			</div>
-			<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
-				<div id="evaluation">
-					<div class="row card-header">
-						<h4 id="evaluation-title" class="card-title">乘客評價</h4>
-						<p class="btn"data-toggle="collapse" data-target="#evaluation-body" aria-expanded="false" style="color: #FFFFFF">▿</p>
-					</div>
-					<div id="evaluation-body"class="collapse card-body">
-						<div class="col">
-							<div class="row" v-for="(item, index) in infodata.data.results.gradeHistory">
-								<div class="col-9">
-									<div id="evaluation-item" class="row">
-										<p id="evaluation-username" data-toggle="collapse" :data-target="'#'+index" aria-expanded="false">{{item.userName}}</p>
-										<p id="evaluation-date">{{item.time | fDate}}</p>
+				<div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-xs-12">
+					<div id="evaluation">
+						<div class="row card-header">
+							<h4 id="evaluation-title" class="card-title">乘客評價</h4>
+							<p class="btn"data-toggle="collapse" data-target="#evaluation-body" aria-expanded="false" style="color: #FFFFFF">▿</p>
+						</div>
+						<div id="evaluation-body"class="collapse card-body">
+							<div class="col">
+								<div class="row" v-for="(item, index) in infodata.data.results.gradeHistory">
+									<div class="col-9">
+										<div id="evaluation-item" class="row">
+											<p id="evaluation-username" data-toggle="collapse" :data-target="'#'+index" aria-expanded="false">{{item.userName}}</p>
+											<p id="evaluation-date">{{item.time | fDate}}</p>
+										</div>
+										<div id="evaluation-message" class="row">
+											<span :id="index" class="collapse text-info">你好阿</span>
+										</div>
 									</div>
-									<div id="evaluation-message" class="row">
-										<span :id="index" class="collapse text-info">你好阿</span>
+									<div class="row">
+										<p id="evaluation-star" v-for="n in Math.floor((item.car+item.service+item.onTime)/3)">★</p>
 									</div>
-								</div>
-								<div class="row">
-									<p id="evaluation-star" v-for="n in Math.floor((item.car+item.service+item.onTime)/3)">★</p>
 								</div>
 							</div>
 						</div>
