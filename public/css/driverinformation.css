@@ -16,6 +16,7 @@
 
 .head-4 {
 	color: #FFFFFF;
+	cursor:pointer;
 }
 
 .head-4:hover {
@@ -34,7 +35,10 @@
 }
 
 #information-body {
-	background-color: #FAFAFA
+	background-color: #FAFAFA;
+	box-shadow: 2px 2px #d3d0d0;
+	margin-bottom: 5px;
+	margin-right: 5px;
 }
 
 #information-facephoto {
@@ -48,7 +52,6 @@
 }
 
 #information-star {
-	margin-top: -10px;
 	color: yellow;
 	font-size: 25px
 }
@@ -87,7 +90,10 @@
 }
 
 .title-font {
-	font-weight: bold
+	font-weight: bold;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
 }
 
 .profile-text {
@@ -95,7 +101,8 @@
 }
 
 #chinesetext {
-	font-size: 20px
+	font-size: 20px;
+	height: 100px;
 }
 
 #englishtext {
@@ -120,10 +127,10 @@
 #service-items {
 	height: 80%;
 	width: 90%;
-	font-size: 12px;
+	font-size: 1.9vh;
 	color: #5F5F5F;
 	background: #FFE51C;
-	border-radius: 10px;
+	border-radius: 15px;
 	margin: 5px;
 	z-index: 3
 }
@@ -134,16 +141,30 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	z-index: 2;
+	overflow-y: scroll;
+	height: 48vh;
+}
+
+::-webkit-scrollbar {
+	display: none
 }
 
 #carphoto {
 	width: 50%;
 	height: 50%;
-	margin: auto
+	margin: auto;
 }
 
 #carphoto:hover {
 	transform: scale(1.5, 1.5);
+}
+
+#carphoto-body {
+	height: 25vh;
+}
+
+#status-body {
+	height: 22vh;
 }
 
 .status {
@@ -164,28 +185,29 @@ span {
 }
 
 #evaluation {
-	background-color: #3C4246
+	background-color: #3C4246;
 }
 
 #evaluation-title {
 	color: #FFFFFF;
 	font-weight: bold
 }
-#evaluation-body{
+
+#evaluation-body {
+	height: 90vh;
 	overflow-y: scroll;
 }
-#evaluation-item {
-	height: 24px;
-	margin-bottom: 15px
+
+::-webkit-scrollbar {
+	display: none
 }
 
-#evaluation-username {
-	color: #FFFFFF
-}
-
-#evaluation-date {
+#evaluation-items {
 	color: #FFFFFF;
-	margin-left: 20px
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	cursor:pointer;
 }
 
 #evaluation-message {
@@ -194,7 +216,7 @@ span {
 
 #evaluation-star {
 	margin-bottom: 15px;
-	color: yellow
+	color: yellow;
 }
 
 #pagetop-btn {
@@ -207,4 +229,62 @@ span {
 	font-size: 25px;
 	color: #69c;
 	text-align: center
+}
+#loading {
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    height: 400vh;
+    width: 100vw;
+    display: block;
+}
+#loading>img {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@media (max-width:576px) {
+	#carphoto-body {
+		height: 40vh;
+	}
+}
+
+@media (max-width:768px) {
+	#evaluation-body {
+		max-height: 60vh;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+	#carphoto-body {
+		height: 20vh;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+	#carphoto-body {
+		height: 35vh;
+	}
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+	#carphoto-body {
+		height: 52vh;
+	}
 }

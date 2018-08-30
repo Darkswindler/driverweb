@@ -20,6 +20,7 @@ span {
 
 .head-4 {
     color: #FFFFFF;
+    cursor: pointer;
 }
 
 .head-4:hover {
@@ -39,12 +40,16 @@ span {
     text-align: center;
     font-weight: bold
 }
-.feature-picture{
+
+.feature-picture {
     transform: scale(1.25, 1.25);
+    cursor: pointer
 }
+
 .feature-picture:hover {
     transform: scale(1.5, 1.5);
 }
+
 #introduction {
     font-size: 30px;
     margin-top: 100px;
@@ -57,14 +62,17 @@ span {
     height: 175.5px;
     margin-top: -75px;
 }
-#separation-line{
+
+#separation-line {
     margin-top: -2px;
     height: 0.025px;
     background: rgb(129, 129, 129);
 }
+
 #driverinformation-1 {
     overflow-x: scroll;
-    display: none
+    display: none;
+    scrollbar-arrow-color: #f31010;
 }
 
 #driverinformation-2 {
@@ -96,10 +104,8 @@ span {
 }
 
 #facephoto {
-    width: 270px;
-    height: 187.5px;
-    display: block;
-    margin: auto;
+    width: 80%;
+    height: 40%;
     padding-top: 15px
 }
 
@@ -123,10 +129,20 @@ span {
     font-weight: bold;
     padding-left: 30px
 }
-#separation-line2{
+
+#separation-line2 {
     height: 0.025px;
     background: rgb(129, 129, 129);
 }
+
+#emptystring {
+    width: 500vh
+}
+
+#emptystring-RWD {
+    width: 20vh
+}
+
 #more {
     border-radius: 20px;
     width: 80px;
@@ -134,7 +150,11 @@ span {
     background-color: #76D4D6;
     color: #FFFFFF;
     line-height: 15px;
-    float: right;
+}
+
+#sticker {
+    overflow-x: scroll;
+    display: flex;
 }
 
 #sticker1 {
@@ -171,6 +191,18 @@ span {
     margin-top: 30px;
 }
 
+#sticker-rwd {
+    display: none;
+}
+
+#emptystring {
+    width: 500vh;
+}
+
+#emptystring-rwd {
+    width: 20vh;
+}
+
 #pagetop-button {
     width: 40px;
     float: right;
@@ -184,7 +216,7 @@ span {
     text-align: center
 }
 
-@media (max-width:640px) {
+@media (max-width:576px) {
     #menu {
         margin-top: -130px;
     }
@@ -193,39 +225,76 @@ span {
     }
     #driverinformation-rwd {
         margin-top: -50px;
+        display: block;
     }
     #cubeebear {
         transform: scale(0.5, 0.5);
         margin-right: -50px;
     }
-    #separation-line{
+    #separation-line {
         margin-top: -45px;
     }
-}
-
-@media (max-width:746px) {
-    #driverinformation-rwd {
+    #facephoto {
+        width: 70%;
+        height: 40%;
+    }
+    #sticker-rwd {
         display: block;
+    }
+    #sticker {
+        display: none;
     }
 }
 
-@media (min-width:580px) {
+
+#loading {
+    background-color: white;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    height: 400vh;
+    width: 100vw;
+    display: block;
+}
+#loading>img {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    -webkit-animation: spin 2s linear infinite;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (min-width:576px) {
     #menu {
         overflow-x: hidden;
     }
-}
-
-@media (min-width:1200px) {
-    #carousel-button1 {
-        display: none
+    #information {
+        margin-left: 15px;
+        margin-right: 15px;
     }
 }
 
 @media (min-width:1200px) {
-    #carousel-button2 {
-        display: none
+    #menu {
+        overflow-x: hidden;
     }
-    #information{
+    #sticker {
+        overflow-x: hidden;
+    }
+    #information {
         margin-left: 15px;
         margin-right: 15px;
     }

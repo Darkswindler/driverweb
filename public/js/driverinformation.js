@@ -1,38 +1,54 @@
 var search = window.location.search.split("=");
 var driverID = search[1];
 var fbody = {
-
   guestKey: "",
   accessKey: "22295671-29eb-40f8-9c50-f8f72529f057",
   userID: "948FFA45935D56E2409A886B4C5618DC79B81CA3",
   orderID: "",
   driverID: driverID,
   limit: 100
-
 }
-
 console.log(fbody);
-
-
 new Vue({
   el: '#app',
   data() {
     return {
       infodata: {
         data: {
-          results: ""
+          results: {
+            license: {
+              isVerify: {},
+            },
+            phone: {
+              number: {},
+              isVerify: {},
+            },
+            skill: [],
+            extra: [],
+            car: {},
+            grade: {
+              car: "",
+              onTime: "",
+              service: ""
+            },
+            gradeHistory: [{
+              car: ""
+            }]
+          }
         }
       }
     }
   },
   mounted() {
     axios
-      .post('/driverData', fbody)
+      .post('/driverinformation', fbody)
       .then(data => {
         this.infodata.data.results = data.data.results
         console.log(data);
-        1
-        this.infodata.data.results.extra = ["a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "a", "b", "c", "b", "c", "a", "b", "c", "a", "b"];
+        // this.infodata.data.results.extra=["無菸車","機場接送","懂英文","無障礙車"]
+      })
+      .then(()=>{
+        $("#loading").css('display','none');
       })
   },
   filters: {
@@ -65,6 +81,17 @@ new Vue({
           return "無"
       }
     }
+  },
+  methods: {
+    stars(car, service, onTime) {
+      console.log((car + service + onTime) / 3);
+      if (((car + service + onTime) / 3)) {
+        return (car + service + onTime) / 3;
+      } else {
+        console.log("stars")
+        return 0;
+      }
+    }
   }
 });
 setTimeout(function () {
@@ -75,10 +102,10 @@ setTimeout(function () {
   });
   $(function () {
     $('#information-profilebtn').click(function () {
-      if ($(window).width() < 992) {
+      if ($(window).width() < 768) {
         var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
         $body.animate({
-          scrollTop: 700
+          scrollTop: 680
         }, 600);
       }
       return false;
@@ -86,7 +113,7 @@ setTimeout(function () {
   });
   $(function () {
     $('#information-servicebtn').click(function () {
-      if ($(window).width() < 992) {
+      if ($(window).width() < 768) {
         var $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
         $body.animate({
           scrollTop: 1000

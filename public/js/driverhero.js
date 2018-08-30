@@ -11,16 +11,19 @@ new Vue({
   },
   mounted() {
     axios
-      .get('/driverList')
+      .get('/driverhero')
       .then(data => {
         this.infodata.data.results = data.data.results
         console.log(data);
+      })
+      .then(()=>{
+        $("#loading").css('display','none');
       })
   },
   methods: {
     go: (driverID) => {
       window.location.href = ("https://dev-driverweb.herokuapp.com/html/driverweb.html" + "?id=" +driverID);
-      // window.location.href = ("http://localhost:8080/html/driverweb.html" + "?id=" + driverID);
+      // window.location.href = ("http://localhost:8080/html/driverinformation.html" + "?id=" + driverID);
     }
   }
 });
@@ -37,7 +40,7 @@ new Vue({
   },
   mounted() {
     axios
-      .get('/driverList')
+      .get('/driverhero')
       .then(data => {
         this.infodata.data.results = data.data.results
         console.log(data);
@@ -46,7 +49,7 @@ new Vue({
   methods: {
     go: (driverID) => {
       window.location.href = ("https://dev-driverweb.herokuapp.com/html/driverweb.html" + "?id=" +driverID);
-      // window.location.href = ("http://localhost:8080/html/driverweb.html" + "?id=" + driverID);
+      //window.location.href = ("http://localhost:8080/html/driverinformation.html" + "?id=" + driverID);
     }
   }
 });
@@ -65,20 +68,20 @@ x.addListener(menuwidth) // Attach listener function on state changes
 
 function sticker(y) {
   if (y.matches) { // If media query matches
-    $('#sticker1').attr('class', 'col-12 num carousel-item active');
-    $('#sticker2').attr('class', 'col-12 num carousel-item');
-    $('#sticker3').attr('class', 'col-12 num carousel-item');
-    $('#sticker4').attr('class', 'col-12 num carousel-item');
+    // $('#sticker1').attr('class', 'col-12 num carousel-item active');
+    // $('#sticker2').attr('class', 'col-12 num carousel-item');
+    // $('#sticker3').attr('class', 'col-12 num carousel-item');
+    // $('#sticker4').attr('class', 'col-12 num carousel-item');
     $('#driverinformation-1').attr('class', 'justify-content-start no-gutters');
   } else {
-    $('#sticker1').attr('class', 'col-3 num');
-    $('#sticker2').attr('class', 'col-3 num');
-    $('#sticker3').attr('class', 'col-3 num');
-    $('#sticker4').attr('class', 'col-3 num');
+    // $('#sticker1').attr('class', 'col-3 num');
+    // $('#sticker2').attr('class', 'col-3 num');
+    // $('#sticker3').attr('class', 'col-3 num');
+    // $('#sticker4').attr('class', 'col-3 num');
     $('#driverinformation-1').attr('class', 'd-flex justify-content-start no-gutters');
   }
 }
-var y = window.matchMedia("(max-width: 746px)")
+var y = window.matchMedia("(max-width: 576px)")
 sticker(y) // Call listener function at run time
 y.addListener(sticker) // Attach listener function on state changes
 $(function () {
@@ -112,7 +115,7 @@ $(function () {
   }
 });
 $(function () {
-  $("#carouselExampleControls1").swipe({
+  $("#sticker-rwd").swipe({
     swipeStatus: swipe,
     allowPageScroll: "auto"
   });

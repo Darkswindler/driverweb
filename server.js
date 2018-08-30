@@ -16,7 +16,7 @@ app.use(require("body-parser").json());
 
 // serve the homepage 預設主頁面為 index.html
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/html/driverlist.html');
+  res.sendFile(__dirname + '/public/html/driverhero.html');
 });
 
 // 後端接收前端  POST 的 接口  拿前端資料做壞事的地方!!!!
@@ -28,7 +28,7 @@ app.post('/clicked', (req, res) => {
 });
 
 // 後端進行資料處理 (向伺服器要資料) GET 接口
-app.post('/driverData', (req, res) => {
+app.post('/driverinformation', (req, res) => {
   console.log(req.body);
 
   request.post("https://api-dev.bluenet-ride.com/v2_0/passenger/order/request/detail", {
@@ -39,7 +39,7 @@ app.post('/driverData', (req, res) => {
       json: req.body
     },
     (error, response, body) => {
-      console.log("driverData-response-statusCode", response.statusCode);
+      console.log("driverinformation-response-statusCode", response.statusCode);
       if (error) {
         console.log('Error while sending message' + error);
         return;
@@ -54,7 +54,7 @@ app.post('/driverData', (req, res) => {
 
 });
 
-app.get('/driverList', (req, res) => {
+app.get('/driverhero', (req, res) => {
 
   request.post("https://api-dev.bluenet-ride.com/v2_0/driver/hero/list", {
       headers: {
