@@ -45,7 +45,7 @@ new Vue({
       .then(data => {
         this.infodata.data.results = data.data.results
         console.log(data);
-        this.infodata.data.result.extra=["無菸車","機場接送","懂英文","無障礙車"]
+        this.infodata.data.results.extra=["無菸車","機場接送","懂英文","無障礙車"]
       })
       .then(()=>{
         $("#loading").css('display','none');
