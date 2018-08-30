@@ -253,8 +253,8 @@ span {
     left: 0;
     top: 0;
     z-index: 99;
-    height: 200px;
-    width: 200px;
+    height: 400vh;
+    width: 100vw;
     display: block;
 }
 #loading>img {
