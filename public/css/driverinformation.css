@@ -52,7 +52,7 @@
 }
 
 #information-star {
-	color: yellow;
+	color: rgb(244,197,81);
 	font-size: 25px
 }
 
@@ -216,7 +216,7 @@ span {
 
 #evaluation-star {
 	margin-bottom: 15px;
-	color: yellow;
+	color: rgb(244,197,81);
 }
 
 #pagetop-btn {
